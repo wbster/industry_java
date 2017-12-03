@@ -1,9 +1,11 @@
-import org.json.JSONException;
-import org.json.JSONObject;
+import jdk.nashorn.internal.parser.JSONParser;
+import org.json.simple.JSONObject;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferStrategy;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 
 public class Start extends Canvas implements Runnable{
     private static final long serialVersionUID = 1L;
@@ -19,8 +21,8 @@ public class Start extends Canvas implements Runnable{
         running = true;
         data = new Data(this);
         try {
-            map = new JSONObject(data.read("data.json"));
-        } catch (JSONException e) {
+            map = (JSONObject) new JSONParser().parse(new FileReader("data.json"));
+        } catch (FileNotFoundException e) {
             map = new JSONObject();
         }
 
