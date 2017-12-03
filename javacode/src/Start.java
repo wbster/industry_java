@@ -58,6 +58,7 @@ public class Start extends Canvas implements Runnable{
         bs.show();
     }
     public static void main(String[] args) {
+         JSONParser parser = new JSONParser();
         Start game = new Start();
         game.setPreferredSize(new Dimension(1000, 650));
         JFrame frame = new JFrame("game");
