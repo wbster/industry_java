@@ -1,5 +1,3 @@
-import org.json.JSONException;
-
 import java.awt.*;
 import java.io.*;
 
@@ -16,15 +14,15 @@ class Data {
      void add(int id,int x,int y,int z){
         try {
             context.map.put(x+":"+y+":"+z,id);
-        } catch (JSONException e) {
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
      int get(int x,int y,int z){
         int block = 0;
         try {
-            block = context.map.getInt(x+":"+y+":"+z);
-        } catch (JSONException e) {
+            block = (int) context.map.get(x+":"+y+":"+z);//.getInt(x+":"+y+":"+z);
+        } catch (Exception e) {
             block = 0;
 //            if(z == 0){
 //                if(rand(1,20) == 1){block = 2;}

@@ -1,10 +1,9 @@
-import jdk.nashorn.internal.parser.JSONParser;
 import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferStrategy;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 
 public class Start extends Canvas implements Runnable{
@@ -21,12 +20,12 @@ public class Start extends Canvas implements Runnable{
         running = true;
         data = new Data(this);
         try {
-            map = (JSONObject) new JSONParser().parse(new FileReader("data.json"));
-        } catch (FileNotFoundException e) {
+                map = (JSONObject) new JSONParser().parse(new FileReader("data.json"));
+        } catch (Exception e) {
             map = new JSONObject();
         }
 
-        items = new Items(this);
+         items = new Items(this);
         user = new User(this);
         stage = new GameView(this);
         mouse = new Mouse(this);
